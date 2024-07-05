@@ -1,9 +1,29 @@
-var modal = document.getElementById("id01");
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+var loginModal = document.getElementById("id01");
+var registerModal = document.getElementById("id02");
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == loginModal) {
+    loginModal.style.display = "none";
+  } else if (event.target == registerModal) {
+    registerModal.style.display = "none";
   }
 };
+
+// Function to open the login modal
+function openLoginModal() {
+  loginModal.style.display = 'block';
+}
+
+// Function to open the register modal
+function openRegisterModal() {
+  registerModal.style.display = 'block';
+}
+
+// Function to close the modals
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
 
 var signIn = document.getElementById("sign-in-menu");
 var signOut = document.getElementById("sign-out-menu");
