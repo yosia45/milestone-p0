@@ -1,8 +1,7 @@
 <?php
-// Change this to your connection info.
-$DATABASE_HOST = 'localhost';
+$DATABASE_HOST = '127.0.0.1:3306';
 $DATABASE_USER = 'root';
-$DATABASE_PASS = 'root';
+$DATABASE_PASS = '';
 $DATABASE_NAME = 'milestone-p0';
 // Try and connect using the info above.
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
@@ -52,6 +51,8 @@ if ($stmt = $con->prepare('INSERT INTO users (username, password, email) VALUES 
 	$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
 	$stmt->execute();
 	echo 'You have successfully registered! You can now login!';
+	header('Location: home.php');
+	exit();
 } else {
 	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all three fields.
 	echo 'Could not prepare statement!';

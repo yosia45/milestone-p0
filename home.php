@@ -28,25 +28,17 @@
           <a href="#">Sign Out</a>
         </li>
         <li id="sign-in-menu">
-          <a
-            onclick="document.getElementById('id01').style.display='block'"
-            href="#"
-          >
-            Sign In
-          </a>
+          <a onclick="openLoginModal()" href="#"> Sign In </a>
         </li>
         <li id="register-menu">
-          <a
-            href="#"
-            onclick="document.getElementById('id01').style.display='block'"
-            >Register</a
-          >
+          <a href="#" onclick="openRegisterModal()">Register</a>
         </li>
       </ul>
     </div>
+
     <!-- login-modal section -->
     <div id="id01" class="modal">
-      <form class="modal-content animate" action="register.php" method="POST">
+      <form class="modal-content animate" action="login.php">
         <div class="imgcontainer">
           <span
             onclick="document.getElementById('id01').style.display='none'"
@@ -87,6 +79,54 @@
       </form>
     </div>
     <!-- end of login-modal section -->
+
+    <!-- register-modal section -->
+    <div id="id02" class="modal">
+      <form class="modal-content animate" action="register.php">
+        <div class="imgcontainer">
+          <span
+            onclick="document.getElementById('id01').style.display='none'"
+            class="close"
+            title="Close Modal"
+            >×</span
+          >
+        </div>
+        <div class="container">
+          <label><b>Username</b></label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            required
+          />
+
+          <label><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            required
+          />
+
+          <label><b>Email</b></label>
+          <input type="email" placeholder="Enter Email" name="email" required />
+
+          <button type="submit">Register</button>
+        </div>
+
+        <div class="container" style="background-color: #f1f1f1">
+          <button
+            type="button"
+            onclick="document.getElementById('id01').style.display='none'"
+            class="cancelbtn"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- end of register-modal section -->
+
     <!-- end of navbar section -->
 
     <!-- main content section -->
@@ -157,7 +197,11 @@
                 We construct and maintain transportation-related facilities that
                 including road, surface or/and underground rails and sky bridge.
               </p>
-              <p><button>Get Consultation</button></p>
+              <p>
+                <button onclick="addToCart('Transportation Facility', 100)">
+                  Add to Cart
+                </button>
+              </p>
             </div>
           </div>
           <div class="card-wrap">
@@ -169,7 +213,11 @@
                 and maintaining beacons by using Redstone Technology and handled
                 by our best engineer.
               </p>
-              <p><button>Get Consulation</button></p>
+              <p>
+                <button onclick="addToCart('Public Facility Projects', 200)">
+                  Add to Cart
+                </button>
+              </p>
             </div>
           </div>
           <div class="card-wrap">
@@ -181,7 +229,11 @@
                 including diamond, netherite, and redstone. DON'T WASTE YOUR
                 TIME!!!
               </p>
-              <p><button>Get Consultation</button></p>
+              <p>
+                <button onclick="addToCart('Resources Exploration', 300)">
+                  Add to Cart
+                </button>
+              </p>
             </div>
           </div>
           <div class="card-wrap">
@@ -196,7 +248,11 @@
                 Construction provide service for land clearing that consist of
                 flattening terrain and demolish creeper spawner!
               </p>
-              <p><button>Get Consultation</button></p>
+              <p>
+                <button onclick="addToCart('Land Clearing', 400)">
+                  Add to Cart
+                </button>
+              </p>
             </div>
           </div>
         </div>
@@ -257,12 +313,17 @@
       <!-- contact-us section -->
       <div id="contact-us-container">
         <h2 class="section-title">Ask Us Anything</h2>
-        <form action="action_page.php">
+        <form action="contact-us.php" method="post">
           <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name..">
-      
+          <input type="text" id="name" name="name" placeholder="Your name.." />
+
           <label for="lname">email</label>
-          <input type="email" id="email" name="email" placeholder="Your email..">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email.."
+          />
 
           <label for="topic">Topic</label>
           <select id="topic" name="topic">
@@ -285,6 +346,15 @@
       <!-- end of contact-us section -->
     </section>
     <!-- end of main-content section -->
+
+    <!-- cart section -->
+    <section id="cart" class="section">
+      <h2 class="section-title">Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <div id="cart-total"></div>
+      <button onclick="checkout()">Checkout</button>
+    </section>
+    <!-- end of cart section -->
 
     <!-- footer section -->
     <div>
@@ -313,9 +383,5 @@
     </div>
     <!-- end of footer section -->
   </body>
-
-  <?php
-
-  ?>
   <script src="index.js"></script>
 </html>
